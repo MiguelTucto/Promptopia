@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -12,11 +12,10 @@ const Nav = () => {
     const [toggleDropdown, setToggleDropdown] = useState(false);
 
     useEffect(() => {
-        const setUpProviders = async () => {
-            const response = await getProviders();
-            setProviders(response);
-        }
-        setUpProviders();
+        (async () => {
+            const res = await getProviders();
+            setProviders(res);
+        })();
     }, [])
 
   return (
