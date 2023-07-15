@@ -10,7 +10,6 @@ const Nav = () => {
 
     const [providers, setProviders] = useState(null);
     const [toggleDropdown, setToggleDropdown] = useState(false);
-
     useEffect(() => {
         (async () => {
             const res = await getProviders();
@@ -50,14 +49,19 @@ const Nav = () => {
                           <>
                               {providers &&
                               Object.values(providers).map((provider) => (
-                                  <button
-                                      type="button"
-                                      key={provider.name}
-                                      onClick={() => signIn(provider.id)}
-                                      className="black_btn"
-                                  >
-                                      Sign In
-                                  </button>
+                                  <div key={provider.id} className="flex gap-3">
+                                      <button
+                                          type="button"
+                                          key={provider.name}
+                                          onClick={() => signIn(provider.id)}
+                                          className="black_btn"
+                                      >
+                                          Sign In
+                                      </button>
+                                      <Link href="/register" className="outline_btn">
+                                          Register Now!
+                                      </Link>
+                                  </div>
                               ))}
                           </>
                       )

@@ -43,6 +43,9 @@ const handler = NextAuth({
                 console.log("Error checking if user exists: ", error.message);
                 return false;
             }
+        },
+        async createNewUser({ user }) {
+
         }
     }
 })
