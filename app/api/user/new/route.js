@@ -13,10 +13,11 @@ export const POST = async ( req ) => {
             image
         })
 
-        await newUser.create();
+        await newUser.save();
 
         return new Response(JSON.stringify(newUser), { status: 201 });
     } catch (error) {
+        console.log(error);
         return new Response("Failed to create a new User", { status: 500 });
     }
 }

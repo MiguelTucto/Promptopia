@@ -31,7 +31,7 @@ const Register = () => {
                 })
             console.log(response);
             if (response.ok) {
-                router.push('/');
+                alert("User created!");
             }
         } catch (error) {
             console.log(error)

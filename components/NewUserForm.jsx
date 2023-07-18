@@ -4,7 +4,6 @@ const NewUserForm = ({ user, setUser, handleSubmit, submitting }) => {
     return(
         <>
             <section className="w-full max-w-full flex-start flex-col">
-
                 <form
                     onSubmit={handleSubmit}
                     className="mt-5 w-full max-w-2xl flex flex-col gap-7 glassmorphism"
