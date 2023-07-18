@@ -42,7 +42,7 @@ const Nav = () => {
                                   Sign Out
                               </button>
                               <Link href="/profile">
-                                  <Image src={session.user.image} width={37} height={37} className="rounded-full" alt="Profile"/>
+                                  <Image src={session.user.image} width={37} height={37} className="rounded-full" alt="ProfileComponent"/>
                               </Link>
                           </div>
                       ): (
@@ -72,7 +72,7 @@ const Nav = () => {
                   {
                       session?.user ? (
                           <div className="flex">
-                              <Image src="/assets/images/logo.svg" alt="Profile" width={37} height={37} className="rounded-full" onClick={() => setToggleDropdown((prev) => !prev)} />
+                              <Image src="/assets/images/logo.svg" alt="ProfileComponent" width={37} height={37} className="rounded-full" onClick={() => setToggleDropdown((prev) => !prev)} />
                               {
                                   toggleDropdown && (
                                       <div className="dropdown">
@@ -81,7 +81,7 @@ const Nav = () => {
                                               className="dropdown_link"
                                               onClick={() => setToggleDropdown(false)}
                                           >
-                                              My Profile
+                                              My ProfileComponent
                                           </Link>
                                           <Link
                                               href="/create-prompt"
