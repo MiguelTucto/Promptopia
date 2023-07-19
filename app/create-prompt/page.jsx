@@ -46,13 +46,20 @@ const CreatePrompt = () => {
 
     return (
         <>
-            <Form
-                type="Create"
-                post={post}
-                setPost={setPost}
-                submitting={submitting}
-                handleSubmit={createPrompt}
-            />
+            {
+                session?.user ? (
+                    <Form
+                        type="Create"
+                        post={post}
+                        setPost={setPost}
+                        submitting={submitting}
+                        handleSubmit={createPrompt}
+                    />
+                ) : (
+                    router.push('/')
+                )
+            }
+
         </>
     )
 }

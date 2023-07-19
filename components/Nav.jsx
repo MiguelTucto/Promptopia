@@ -5,8 +5,10 @@ import Image from 'next/image';
 import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 import {providers} from "@node_modules/next-auth/core/routes";
+import {useRouter} from "@node_modules/next/dist/client/components/navigation";
 const Nav = () => {
     const { data: session } = useSession();
+    const router = useRouter();
 
     const [providers, setProviders] = useState(null);
     const [toggleDropdown, setToggleDropdown] = useState(false);
@@ -16,6 +18,12 @@ const Nav = () => {
             setProviders(res);
         })();
     }, [])
+
+    const logOut = () => {
+        router.push("/");
+        signOut();
+
+    }
 
   return (
       <>
@@ -38,7 +46,7 @@ const Nav = () => {
                               <Link href="/create-prompt" className="black_btn">
                                   Create Post
                               </Link>
-                              <button type="button" onClick={signOut} className="outline_btn">
+                              <button  type="button" onClick={logOut} className="outline_btn">
                                   Sign Out
                               </button>
                               <Link href="/profile">
@@ -72,7 +80,7 @@ const Nav = () => {
                   {
                       session?.user ? (
                           <div className="flex">
-                              <Image src="/assets/images/logo.svg" alt="ProfileComponent" width={37} height={37} className="rounded-full" onClick={() => setToggleDropdown((prev) => !prev)} />
+                              <Image src={session?.user.image} alt="ProfileComponent" width={37} height={37} className="rounded-full" onClick={() => setToggleDropdown((prev) => !prev)} />
                               {
                                   toggleDropdown && (
                                       <div className="dropdown">
@@ -81,7 +89,7 @@ const Nav = () => {
                                               className="dropdown_link"
                                               onClick={() => setToggleDropdown(false)}
                                           >
-                                              My ProfileComponent
+                                              My Profile
                                           </Link>
                                           <Link
                                               href="/create-prompt"

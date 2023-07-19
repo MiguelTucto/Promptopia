@@ -47,6 +47,7 @@ const Register = () => {
                 setUser={setUser}
                 submitting={submitting}
                 handleSubmit={createUser}
+                type="Create"
             />
         </>
     )

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const NewUserForm = ({ user, setUser, handleSubmit, submitting }) => {
+const NewUserForm = ({ user, setUser, handleSubmit, submitting, type }) => {
     return(
         <>
             <section className="w-full max-w-full flex-start flex-col">
@@ -56,7 +56,7 @@ const NewUserForm = ({ user, setUser, handleSubmit, submitting }) => {
                             disabled={submitting}
                             className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"
                         >
-                            { submitting ? `Create...`: 'Create'}
+                            { submitting ? `${type}...`: `${type}`}
                         </button>
                     </div>
                 </form>

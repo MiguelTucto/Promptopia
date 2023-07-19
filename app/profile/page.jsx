@@ -13,18 +13,16 @@ const Profile = () => {
     const [submitting, setSubmitting] = useState(false);
 
     useEffect(() => {
-
         const fetchPosts =  async () => {
             const response = await fetch(`/api/users/${session?.user.id}/posts`);
             const data = await response.json();
 
             setPosts(data);
-            console.log('Posts fetched!');
         }
+
         const fetchUser = async () => {
             const response = await fetch(`/api/user/${session?.user.id}`);
             const data = await response.json();
-            console.log(data);
             setUser(data);
         }
         if (session?.user.id) {
@@ -33,8 +31,8 @@ const Profile = () => {
         }
     }, []);
 
-    const handleEdit = () => {
-
+    const handleEdit = (post) => {
+        router.push(`/update-prompt?id=${post._id}`);
     }
 
     const handleDelete = () => {
@@ -70,17 +68,24 @@ const Profile = () => {
 
     return(
         <>
-            <ProfileComponent
-                name="My"
-                desc="Welcome to your personalized profile page"
-                data={posts}
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-                handleUserUpdate={handleUserUpdate}
-                submitting={submitting}
-                currentUser={user}
-                setCurrentUser={setUser}
-            />
+            {
+                session?.user ? (
+                    <ProfileComponent
+                        name="My"
+                        desc="Welcome to your personalized profile page"
+                        data={posts}
+                        handleEdit={handleEdit}
+                        handleDelete={handleDelete}
+                        handleUserUpdate={handleUserUpdate}
+                        submitting={submitting}
+                        currentUser={user}
+                        setCurrentUser={setUser}
+                    />
+                ) : (
+                    router.push('/')
+                )
+            }
+
         </>
     )
 }
