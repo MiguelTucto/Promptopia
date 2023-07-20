@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from 'next-auth/providers/google';
 import {connectToDB} from "@utils/database";
+
 import User from "@models/user";
 
 
@@ -34,9 +35,11 @@ const handler = NextAuth({
                     await User.create({
                         email: profile.email,
                         username: profile.name.replace("", "").toLowerCase(),
-                        image: profile.picture
+                        image: profile.picture,
+                        password: profile.password
                     })
                 }
+                console.log(profile);
                 return true;
             } catch (error) {
                 console.log("Error checking if user exists: ", error.message);

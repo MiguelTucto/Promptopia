@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter} from "@node_modules/next/dist/client/components/navigation";
+import { useRouter} from "next/router";
 
 import Form from '@components/Form';
 import {session} from "@node_modules/next-auth/core/routes";

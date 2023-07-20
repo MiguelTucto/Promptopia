@@ -16,6 +16,12 @@ const Nav = () => {
         (async () => {
             const res = await getProviders();
             setProviders(res);
+            console.log("Providers", res);
+
+            Object.values(res).map((provider) => {
+                console.log(provider.id, provider.name);
+            })
+
         })();
     }, [])
 
@@ -66,6 +72,14 @@ const Nav = () => {
                                       >
                                           Sign In
                                       </button>
+                                      {
+                                          /*
+                                            <Link href="/log-in" className="outline_btn">
+                                                 Log In with Email
+                                            </Link>
+                                          */
+                                      }
+
                                       <Link href="/register" className="outline_btn">
                                           Register Now!
                                       </Link>
