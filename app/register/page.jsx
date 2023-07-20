@@ -3,8 +3,7 @@
 import Form from "@components/Form";
 import NewUserForm from "@components/NewUserForm";
 import {useState} from "react";
-import {useRouter} from "@node_modules/next/dist/client/components/navigation";
-
+import { useRouter} from "next/navigation";
 
 const Register = () => {
     const router = useRouter();

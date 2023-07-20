@@ -2,7 +2,7 @@
 import ProfileComponent from "@components/ProfileComponent";
 import {useSession} from "next-auth/react";
 import {useEffect, useState} from "react";
-import { useRouter} from "next/router";
+import { useRouter} from "next/navigation";
 const Profile = () => {
     const router = useRouter();
 
