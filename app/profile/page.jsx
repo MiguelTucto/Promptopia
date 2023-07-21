@@ -85,7 +85,7 @@ const Profile = () => {
     return(
         <>
             {
-                session?.user ? (
+
                     <ProfileComponent
                         name="My"
                         desc="Welcome to your personalized profile page"
@@ -97,9 +97,7 @@ const Profile = () => {
                         currentUser={user}
                         setCurrentUser={setUser}
                     />
-                ) : (
-                    router.push('/')
-                )
+
             }
 
         </>

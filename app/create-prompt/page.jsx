@@ -45,7 +45,7 @@ const CreatePrompt = () => {
     return (
         <>
             {
-                session?.user ? (
+
                     <Form
                         type="Create"
                         post={post}
@@ -53,9 +53,7 @@ const CreatePrompt = () => {
                         submitting={submitting}
                         handleSubmit={createPrompt}
                     />
-                ) : (
-                    router.push('/')
-                )
+
             }
 
         </>
