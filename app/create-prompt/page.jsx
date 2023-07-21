@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { useRouter} from "next/navigation";
 
 import Form from '@components/Form';
+import ErrorComponent from "@components/ErrorComponent";
 
 const CreatePrompt = () => {
     const router = useRouter();
@@ -45,7 +46,7 @@ const CreatePrompt = () => {
     return (
         <>
             {
-
+                session?.user ? (
                     <Form
                         type="Create"
                         post={post}
@@ -53,7 +54,9 @@ const CreatePrompt = () => {
                         submitting={submitting}
                         handleSubmit={createPrompt}
                     />
-
+                ) : (
+                    <ErrorComponent />
+                )
             }
 
         </>

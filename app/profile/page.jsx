@@ -3,6 +3,7 @@ import ProfileComponent from "@components/ProfileComponent";
 import {useSession} from "next-auth/react";
 import {useEffect, useState} from "react";
 import { useRouter} from "next/navigation";
+import ErrorComponent from "@components/ErrorComponent";
 const Profile = () => {
     const router = useRouter();
 
@@ -85,7 +86,7 @@ const Profile = () => {
     return(
         <>
             {
-
+                session?.user ? (
                     <ProfileComponent
                         name="My"
                         desc="Welcome to your personalized profile page"
@@ -97,6 +98,9 @@ const Profile = () => {
                         currentUser={user}
                         setCurrentUser={setUser}
                     />
+                ) : (
+                    <ErrorComponent />
+                )
 
             }
 

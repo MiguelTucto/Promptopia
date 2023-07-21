@@ -4,10 +4,13 @@ import {useSearchParams} from "@node_modules/next/dist/client/components/navigat
 import {useEffect, useState} from "react";
 import Feed from "@components/Feed";
 import Form from "@components/Form";
+import ErrorComponent from "@components/ErrorComponent";
+import {useSession} from "next-auth/react";
 
 const UpdatePrompt = () => {
     const searchParams = useSearchParams();
     const getPromptId = searchParams.get("id");
+    const { data: session } = useSession();
 
     const [post, setPost] = useState({});
     const [submitting, setSubmitting] = useState(false);
@@ -50,13 +53,19 @@ const UpdatePrompt = () => {
 
     return (
         <>
-            <Form
-                type="Edit"
-                post={post}
-                setPost={setPost}
-                submitting={submitting}
-                handleSubmit={updatePrompt}
-            />
+            {
+                session?.user ? (
+                    <Form
+                        type="Edit"
+                        post={post}
+                        setPost={setPost}
+                        submitting={submitting}
+                        handleSubmit={updatePrompt}
+                    />
+                ) : (
+                    <ErrorComponent />
+                )
+            }
         </>
     )
 }
